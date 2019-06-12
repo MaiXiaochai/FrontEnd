@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# svn
+/.svn/
+*.~$lock
+
+#pycharm
+**/.idea/
+
+# Vs Code
+**/.vscode/
