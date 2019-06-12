@@ -23,8 +23,14 @@ class Student:
     def age(self):
         raise AttributeError('不能删除 age 属性')
 
+    def __repr__(self):
+        return "控制台显示, 输入Student"
 
-def main():
+    def __str__(self):
+        return "用于打印，执行print(s)"
+
+
+def main_age():
     s = Student('MaiXiaochai', datetime.date(2019, 6, 12))
     print(s.birthday)
     """Out: 2019-06-12"""
@@ -47,7 +53,8 @@ def main():
     raise AttributeError('不能删除 age 属性')
     AttributeError: 不能删除 age 属性
     """
-    
+
 
 if __name__ == '__main__':
-    main()
+    main_age()
+
