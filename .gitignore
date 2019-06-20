@@ -112,3 +112,6 @@ venv.bak/
 
 # Vs Code
 **/.vscode/
+
+# mindManager
+**.~lock
