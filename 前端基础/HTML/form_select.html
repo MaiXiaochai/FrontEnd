@@ -49,11 +49,51 @@
                 </td>
             </tr>
             <tr>
+                <td>城市：</td>
+                <td>
+                    <select name="city">
+                        <option value="xz">--请选择--</option>
+                        <option value="bj">北京</option>
+                        <option value="tj">天津</option>
+                        <option value="hb">河北</option>
+                        <option value="sh">上海</option>
+                        <option value="xaxq">雄安新区</option>
+                    </select>
+
+                    <select name="city" size="6" multiple>
+                        <option value="bj">北京</option>
+                        <option value="tj">天津</option>
+                        <option value="hb">河北</option>
+                        <option value="sh">上海</option>
+                        <option value="xaxq">雄安新区</option>
+                    </select>
+
+                    <select name="city" size="6" multiple>
+                        <optgroup label="华北">
+                            <option value="bj">北京</option>
+                            <option value="tj">天津</option>
+                            <option value="hb">河北</option>
+                        </optgroup>
+                        <optgroup label="华东">
+                            <option value="sh">上海</option>
+                            <option value="fj">福建</option>
+                            <option value="xm">厦门</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td>喜欢的歌曲：</td>
                 <td>
                     《七里香》<input type="checkbox" name="group2" value="reading">
                     《稻香》<input type="checkbox" name="group2" value="swimming">
                     《迷迭香》<input type="checkbox" name="group2" value="cycling">
+                </td>
+            </tr>
+            <tr>
+                <td>简介</td>
+                <td>
+                    <textarea name="" cols="30" rows="10" placeholder="请输入文本信息"></textarea>
                 </td>
             </tr>
             <tr>
