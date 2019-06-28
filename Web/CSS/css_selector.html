@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style type="text/css">
-        a:link{color:blue;}/*未访问*/
-        a:visited{color:gray;}/*已访问*/
-        a:hover{color:green;}/*鼠标悬浮状态*/
-        a:active{color:orange;}/*激活状态*/
+        a.one:link{color:blue;}/*未访问*/
+        a.one:visited{color:gray;}/*已访问*/
+        a.one:hover{color:green;}/*鼠标悬浮状态*/
+        a.one:active{color:orange;}/*激活状态*/
+
+        a.two:link{color:rgb(18, 18, 134);}/*未访问*/
+        a.two:visited{color:rgb(102, 151, 24);}/*已访问*/
+        a.two:hover{color:rgb(202, 95, 24);}/*鼠标悬浮状态*/
+        a.two:active{color:rgb(241, 46, 215);}/*激活状态*/
     </style>
     <title>CSS 选择器</title>
 </head>
 <body>
-    <a href="https://github.com/MaiXiaochai" target="_blank">css使用方法</a>
+    <a class="one" href="https://github.com/MaiXiaochai" target="_blank">css使用方法</a><br>
+    <a class="two" href="https://github.com/MaiXiaochai" target="_blank">GitHub</a>
 </body>
 </html>
