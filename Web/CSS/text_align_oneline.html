@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单行垂直居中</title>
+    <style type="text/css">
+        *{padding:0px; margin: 0px;}
+        .warp{
+            height:400px;
+            width: 100%;
+            border:1px blue solid;
+            line-height: 400px;
+            /*单行高度与父级元素高度相同即可，这里是单行元素高度，不是文字高度。
+            潜台词是单行文本在行内默认垂直居中*/
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <p>Welcome to Website</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多行文本垂直居中</title>
+    <style type="text/css">
+        *{padding: 0px; margin: 0px;}
+
+        .warp{
+            height: 400px;
+            width:100%;
+            border:1px blue solid;
+            display: table;/*解释看.content中注释*/
+            text-align: center;
+        }
+        .content{
+            vertical-align: middle;
+            /*
+            这里是因为class值为 content 的 div无法实现垂直居中，因为垂直居中只对行内元素有效，
+            从而想到把它放到行内元素中，如span中。而行内元素中不能有块级元素。又想到垂直居中对单元格也起作用，
+            所以，把元素转换为单元格元素，同时，父级元素也要转换成表格元素才行。
+            2019年7月1日21:46:56
+            */
+            display: table-cell; 
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <div class="content">
+            <img src="../HTML/img/logo.jpg" />
+            <h1>Welcome to Wbesite</h1>
+            <h2>CSS层叠样式，用于网页样式设置，使网页更美观。</h2>
+        </div>
+    </div>
+</body>
+</html>
