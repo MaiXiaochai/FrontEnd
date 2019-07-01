@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>派生选择器的优先级</title>
+    <style type="text/css">
+        *{color:black;}     /*权值0*/
+        b{color:purple;}    /*权值1*/
+        p b{color:yellow;}  /*权值2，因为有两个标签选择器，每个标签选择器的权值为1*/
+        .classblue{color:blue;} /*权值10*/
+        #test1 p b{color:orange;} /*权值102*，id选择器权值100，标签选择器每个1，一共102*/
+        div p .classblue{color:red;} /*权值12*/
+        div #test2 b{color:gray;} /*权值102*/
+    </style>
+</head>
+<body>
+    <div id="test1">
+        <h1>CSS样式优先级</h1>
+        <p id="test2">所谓<b class="classblue">CSS优先级</b>，指CSS样式在浏览器中被解析的先后顺序</p>
+        <div><b>权值相同</b>，就近原则；<b>权值不同</b>，哪个权值高，使用哪个</div>
+    </div>
+</body>
+</html>
