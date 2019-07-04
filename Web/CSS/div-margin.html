@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Div margin</title>
     <style type="text/css">
-        .one{width: 300px; height: 300px; background-color: #5dad28;
-            margin:10px 5px 8px 20px;
-        }
+        /* body,p{margin:0px;} */
+        .content{width: 100px; height: 100px; background-color: #5dad28;margin: auto;}
+        .one{width: 300px; height: 300px;background-color: rgb(223, 112, 112);margin-bottom: 20px;}
+        .two{width: 300px; height: 300px;background-color: rgb(223, 112, 112);margin-top: 10px;}
     </style>
 </head>
 <body>
-    <div class="one">margin属性</div>
+    <div class="one">
+        <div class="content">margin属性</div>
+    </div>
+    <div class="two">
+        <div class="content">margin属性</div>
+    </div>
 </body>
 </html>
