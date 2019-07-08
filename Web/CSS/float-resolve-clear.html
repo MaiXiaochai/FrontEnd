@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float塌陷解决-clear</title>
+    <style>
+        .per{
+            width: 200px;
+            height: 100px;
+            background: 1px solid #ccc;
+
+        }
+        .div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            float:left;
+        }
+        .div2{
+            width: 120px;
+            height: 120px;
+            background: blue;
+            clear:left;
+        }
+    </style>
+</head>
+<body>
+    <div class="per">
+        <div class="div1"></div>
+        <div class="div2"></div>
+    </div>
+</body>
+</html>
