@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三列布局</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .left {
+            width: 15%;
+            height: 1000px;
+            background: #67b581;/*background是background各种参数的缩写方式，值的个数任意*/
+            float: left;
+        }
+        .middle {
+            width: 70%;
+            height: 1000px;
+            background: #175bd8;
+            float: left;
+        }
+        .right {
+            width: 15%;
+            height: 1000px;
+            background: #67b581;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左侧内容</div>
+        <div class="middle">中间内容</div>
+        <div class="right">右边内容</div>
+    </div>
+</body>
+</html>
