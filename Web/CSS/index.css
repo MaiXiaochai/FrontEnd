@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header {
+    width: 100%;
+    height: 100px;
+}
+.header img{
+    width: 300px;
+    height: 85px;
+    padding-left: 100px;
+    padding-top: 8px; /* 想要图片在 header上垂直居中, (header:100 - img:85) / 2 ≈ 8 */
+}
+.header .logo {
+    float: left;
+}
+.header .nav {
+    float: right;
+}
+.header .nav ul {
+    padding-right: 100px;
+}
+.header .nav ul li {
+    float: left;
+    list-style: none;
+    width: 80px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: #7d7d7d;
+}
+
+/* 主体 */
+/* 遮罩层 */
+.main .toplayer {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    background-color: #000;
+    width: 100%;
+    height: 600px;
+    opacity: 0.1;
+}
+.main .top {
+    width: 100%;
+    height: 600px;
+}
+/* banner图 */
+.main .top img {
+    width: 100%;
+    height: 600px;
+}
+.main .toplayer-top {
+    width: 500px;
+    height: 300px;
+    background-color: blue;
+    position: absolute;
+    top: 400px;
+    margin-top: -150px; /* 想要居中还需要上移本身高度的一半 */
+    right: 50%;
+    margin-right: -250px;
+    /*
+     Why？有 absolute 后，脱离了文档流，相对于文档流的层级高一级。
+    这里设置2，是与同样是脱离文档流的 toplayer层比较，
+    为 toplayer-top设置相对高的属性，使其在toplayer之上
+    */
+    z-index: 2; 
+}
+
+/* banner图上的字体 */
+.main .toplayer-top .word {
+    padding-top:100px;
+    color: #fff;
+    font-size:45px;
+    font-weight: bolder;
+    text-align: center;
+    font-family: "微软雅黑"
+}
+
+.main .toplayer-top button {
+    width: 200px;
+    height: 60px;
+    margin-top: 50px;
+    color: #fff;
+    background-color: #F5704F;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    border-radius: 8px;
+    
+}
