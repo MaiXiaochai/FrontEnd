@@ -55,7 +55,6 @@
 .main .toplayer-top {
     width: 500px;
     height: 300px;
-    background-color: blue;
     position: absolute;
     top: 400px;
     margin-top: -150px; /* 想要居中还需要上移本身高度的一半 */
@@ -90,5 +89,104 @@
     font-size: 16px;
     font-family: "微软雅黑";
     border-radius: 8px;
-    
+    margin-left: 150px;
+}
+
+.main .middle {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.main .middle .m-top .comment {
+    float: left;
+    width: 33.3%;
+    padding-top: 50px;
+    text-align: center;
+}
+/* 联系方式图片*/
+.main .middle .m-top .comment img{
+    width: 100px;
+    height: 100px;
+}
+/* 联系方式文字 */
+.main .middle .m-top .comment .link-name{
+    font-size: 20px;
+    color: #7D7C7F;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+/* 中间一段文字 */
+.main .middle .m-middle {
+    font-size: 20px;
+    color: #E19796;
+    font-weight: bold;
+    padding-top: 50px;
+    font-style: italic;
+    text-align: center;
+}
+/* 清除浮动，否则后边的部分样式不生效 */
+.clear {
+    clear: both;
+}
+
+/* 中间三张图 */
+.main .middle .m-bottom .m-com {
+    float: left;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.main .middle .m-bottom .m-com img {
+    width:310px;
+    height: 260px;
+}
+
+/* 三张图第一行描述 */
+.main .middle .m-bottom .m-com .desc1 {
+    font-size: 20px;
+    color: #7D7D7F;
+    padding: 20px;
+}
+
+/* 三张图第二行描述 */
+.main .middle .m-bottom .m-com .desc2 {
+    font-size: 20px;
+    color: #BDBDBC;
+    padding: 10px;
+}
+
+/* 中间底部，图文混排 */
+.main .bottom .content {
+    width: 1000px;
+    margin:0 auto;
+}
+
+.main .bottom .title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7D7C7F;
+    font-family: "微软雅黑";
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.main .bottom .content .pic-content dl{
+    float: left;
+    width: 470px;
+    margin: 10px 12px;
+}
+
+.main .bottom .content .pic-content dl img{
+    width: 470px;
+    height: 460px;
+}
+/* 图文混排中的文字段落 */
+.main .bottom .content .pic-content dl .word {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7D7C7F;
+    padding-bottom: 50px;
 }
