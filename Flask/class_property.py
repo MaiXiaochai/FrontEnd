@@ -57,4 +57,3 @@ def main_age():
 
 if __name__ == '__main__':
     main_age()
-
