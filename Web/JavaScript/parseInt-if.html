@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ParseInt</title>
+</head>
+<body>
+<script>
+        let str = "abc123";
+        let num = parseInt(str); //num 是NaN类型,这里考察了parseInt以字母开头的字符串会返回 NaN
+                                //NaN 与任何值都不相等，包括 NaN 本身
+        if (isNaN(num)){
+            alert(NaN);
+        }else if (num === 123){
+            alert(123);
+        }else if(typeof num === "number"){
+            alert("num");
+        }else{
+            alert("str");
+        }
+    </script>
+    <!--最终结果：NaN-->
+</body>
+</html>

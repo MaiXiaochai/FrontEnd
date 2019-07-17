@@ -8,8 +8,29 @@
 </head>
 <body>
     <script>
-        var nbr =1;
-        console.log(nbr+1);
+        var nbr1 = 10, nbr2 = 5, nbr3 = nbr1 ++- nbr2;
+        console.log(nbr1); // 11
+        console.log(nbr3); // 15
+        console.log("-----------")
+        var x1 = 20, x2 = 30, x3 = --x1 + x2 --;
+        console.log(x1); // 19
+        console.log(x2); // 29
+        console.log(x3); // 49
+        console.log("-----------")
+        var x = 12, y = "10";
+        var n = x == y; //把 x == y的Boolean结果赋值给 n
+        console.log(n); //false
+        console.log("------等于和全等------")
+        console.log(null == undefined); // true
+        console.log(null === undefined); // false
+        console.log("-----三元运算符------")
+        var score = 85;
+        var result = (score >= 60) ? "及格": "不及格";
+        console.log(result);
+        var age = 19;
+        if(age < 18){
+            alert("你还未成年！");
+        }
     </script>
 </body>
 </html>

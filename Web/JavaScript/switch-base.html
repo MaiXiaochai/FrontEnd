@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ParseInt</title>
+</head>
+    <meta charset="UTF-8">
+    <title>switch语句-输出星期</title>
+<body>
+    <script>
+        let week = new Date().getDay();
+        let weekStr = "";
+        switch(week){
+            case 0:
+                weekStr = "日";
+                break;
+            case 1:
+                weekStr = "一";
+                break;
+            case 2:
+                weekStr = "二";
+                break;
+            case 3:
+                weekStr = "三";
+                break;
+            case 4:
+                weekStr = "四";
+                break;
+            case 5:
+                weekStr = "五";
+                break;
+            default:
+                weekStr = "六";
+        }
+        document.write("今天是星期" + weekStr);
+    </script>
+</body>
+</html>
