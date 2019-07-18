@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arguments，求任意一组数的平均值</title>
+</head>
+<body>
+    <script >
+        function getAvg(){
+            let total=0, i, len, res;
+            len = arguments.length;
+
+            for (i =0; i < len; i++){
+                total += arguments[i]; //但注意， arguments不是数组
+            }
+            res = total / len;
+            return res;
+        }
+        avg = getAvg(2, 4, 6);
+        console.log(avg); // 4
+    </script>
+</body>
+</html>
