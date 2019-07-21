@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array数组</title>
+</head>
+<body>
+    <script >
+        let arr = ["a", "b", "c", "d", "e"];
+        for (let i = 0; i < arr.length; i++){
+            console.log(arr[i]);
+        }
+        let cols = ["Hello", "Python", "C++"];
+        let res = cols.push("JavaScript");
+        console.log(cols);
+        //join()
+        let res_str = cols.join();
+        console.log(res_str);
+        // reverse()
+        let words = ["a", "b", "c"];
+        words.reverse();
+        console.log(words);
+        //sort()
+        let arr_nbr = [9, 23, 15, 88, 12];
+        // arr_nbr.sort();
+        //升序
+        // arr_nbr.sort(function(a, b){return a - b});
+        // 降序
+        arr_nbr.sort(function(a, b){return b - a});
+        console.log(arr_nbr);
+        //slice()
+        let arr_slice = [1, 2, 3, 4];
+        res_slice = arr_slice.slice(0, 2);
+        console.log(res_slice);
+        res_slice2 = arr_slice.slice(-3, 2);//slice(1, 2)
+        console.log(res_slice2);
+    </script>
+</body>
+</html>
