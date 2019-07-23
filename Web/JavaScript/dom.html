@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom基础</title>
+</head>
+<body>
+    <div class="box" id="box">
+        元素
+    </div>
+    <ul class="list" id="list1">
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>C++</li>
+    </ul>
+    <ol>
+        <li>并行</li>
+        <li>多线程&多进程</li>
+    </ol>
+    <script >
+        //获取id为box的这个元素
+        let box = document.getElementById("box");
+        console.log(box);
+        //获取页面中所有的li
+        let lis = document.getElementsByTagName("li");
+        console.log(lis.length);
+        //获取页面中id为list1的li
+        let lis2 = document.getElementById("list1").getElementsByTagName("li");
+        console.log(lis2.length);
+
+        //设置CSS样式
+        box.style.color="red";
+        box.style.fontWeight="bold";
+    </script>
+</body>
+</html>

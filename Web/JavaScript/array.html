@@ -36,6 +36,20 @@
         console.log(res_slice);
         res_slice2 = arr_slice.slice(-3, 2);//slice(1, 2)，若果是负值，则负值可以变为 数组长度 + 该负值
         console.log(res_slice2);
+
+        //实现b数组对a数组的复制
+        let a =[1, "yes", 3], b;
+
+        //1. 数组遍历，push
+        // b = [];
+        // for (let i =0; i < a.length; i++){
+        //     b.push(a.pop());
+        // }
+        //
+        // //2. concat()
+        // b = [].concat(a);
+        b = a.slice(0);
+        console.log(b);
     </script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>date</title>
+</head>
+<body>
+    <script >
+        //50天后的此刻时间
+        // 创建一个日期时间对象
+        let today=new Date(),
+            weeks = ["日", "一", "二", "三", "四", "五", "六"],
+            res;
+        today.setDate(today.getDate() + 50);
+
+        let year = today.getFullYear(),
+            month = today.getMonth() + 1,
+            day = today.getDate(),
+            hour = today.getHours(),
+            minute = today.getMinutes(),
+            second = today.getSeconds(),
+            week = today.getDay();
+
+        res = "50天后的今天是：" + year + "年" + month + "月" + day + "日 " + hour + ":" + minute + ":" + second + " 星期" + weeks[week];
+        console.log(res);
+
+    </script>
+</body>
+</html>

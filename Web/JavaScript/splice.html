@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>splice</title>
+</head>
+<body>
+    <script >
+        let a = [1, 2, 3, 4], b;
+        a.splice(2, 2, "hello", "Python");
+        console.log(a);
+        function arrayIndexOf(arr, value){
+            for (let i = 0; i < arr.length; i ++){
+                if (arr[i] === value){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        let str = "hello world";
+        console.log(str.charAt(4));
+        console.log(str.charCodeAt(4));
+        function getFileSuffix(url){
+            let dot_index = url.lastIndexOf(".");
+            return url.slice(dot_index);
+        }
+        console.log(getFileSuffix("hello.log"));
+        let str_split = "Welcome-to-Beijing";
+        console.log(str_split.split("-"));
+        console.log(str_split.replace("-", "||"));
+
+        console.log('------------- camelbak ----------------');
+        function camelbak(str){
+            let str_arr = str.split("-"), i = 0, tmp, res = '';
+            console.log(str_arr.length);
+            for (i ; i < str_arr.length; i ++){
+                tmp = str_arr[i];
+                res += (i === 0? tmp: tmp.charAt(0).toUpperCase() + tmp.substr(1));
+            }
+            return res;
+        }
+        console.log(camelbak("hello-world-my-dream"));//helloWorldMyDream
+        console.log("-------------");
+        console.log(Math.min(1,2,3,5));
+    </script>
+</body>
+</html>
