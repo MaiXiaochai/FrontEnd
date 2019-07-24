@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+    <style>
+        .btn{
+            width: 140px; height: 30px; line-height: 30px;background: #00f;
+            color: #fff; font-size: 14px; text-align: center; border-radius: 10px;
+            cursor: pointer;margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" value="弹出" onclick="alert('button')">
+    <div class="btn" onmouseover="mouseoverFn(this, 'red')" onmouseout="mouseoutFn(this, 'blue')">
+        开始
+    </div>
+    <div class="btn" onmouseover="mouseoverFn(this, 'yellow')" onmouseout="mouseoutFn(this, 'pink')">
+        结束
+    </div>
+    <script >
+        function mouseoverFn(btn, bgcolor){
+            //鼠标滑过按钮，按钮背景变为红色
+            btn.style.background=bgcolor;
+        }
+        function mouseoutFn(btn, bgcolor){
+            //鼠标离开，按钮背景变为蓝色
+            btn.style.background=bgcolor;
+        }
+    </script>
+</body>
+</html>

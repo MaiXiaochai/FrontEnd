@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dom基础</title>
+    <style>
+        .current{
+            background: #CCC;
+            color: #F00;
+        }
+    </style>
 </head>
 <body>
+    <p id="text" class="test" align="center" data-type="title">文本</p>
     <div class="box" id="box">
         元素
     </div>
@@ -29,10 +36,18 @@
         //获取页面中id为list1的li
         let lis2 = document.getElementById("list1").getElementsByTagName("li");
         console.log(lis2.length);
+        console.log("-------- getAttribute --------------");
 
         //设置CSS样式
         box.style.color="red";
         box.style.fontWeight="bold";
+        for (let i = 0; i< lis2.length; i ++){
+            lis2[i].style.color="blue";
+            lis2[i].innerHTML = ">" + lis2[i].innerHTML;
+        }
+        lis2[1].className = "current";
+        let p = document.getElementById("text");
+        console.log(p.getAttribute("align"));
     </script>
 </body>
 </html>

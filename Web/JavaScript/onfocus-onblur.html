@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>onfocus-onblur</title>
+    <style>
+        .box{
+            padding: 50px;
+        }
+        .left, .tip{
+            float: left;
+        }
+        .left{
+            margin-right: 10px;
+        }
+        .tip{
+            display: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left">
+            <input type="text" id="phone" placeholder="请输入手机号码">
+        </div>
+        <div class="tip" id="tip">
+            请输入有效的手机号码
+        </div>
+    </div>
+    <script >
+        //获取文本框和提示框
+        let phone=document.getElementById("phone"),
+            tip=document.getElementById("tip");
+        //给文本框绑定激活事件
+        phone.onfocus=function(){
+            //让tip显示出来
+            tip.style.display="block";
+        };
+        //文本框绑定失去焦点事件
+        phone.onblur=function(){
+            let phoneVal = this.value;//this.value 获取表单元素的值
+
+            //手机号码是否是11位，正确则对号图标，否则叉号图标
+            if(phoneVal.length === 11 && isNaN(phoneVal) === false){
+                //isNaN,非数字，不是非数字的意思就是是数字
+                tip.innerHTML='<img src="img/right.png">';
+            }else{
+                tip.innerHTML='<img src="img/error.png">';
+            }
+        }
+    </script>
+</body>
+</html>
