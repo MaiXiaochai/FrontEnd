@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOM基础</title>
+</head>
+<body>
+    <script >
+        //声明一个全局变量
+        var age=15;//等价于window.name=15;
+        window.username="Python";
+        function sayAge(){
+            alert("Age: "+age);
+        }
+        //声明一个全局方法
+        window.sayName=function(){
+            alert("Name: "+ this.username);
+        };
+        sayName();
+    </script>
+</body>
+</html>

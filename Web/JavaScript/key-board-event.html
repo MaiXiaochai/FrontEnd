@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘事件</title>
+    <style>
+        .text span{
+            font-weight: bold;
+            color: #f00;
+        }
+        em{
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="text">您还可以输入<span><em id="count">30</em>/30</span></p>
+        <div class="input">
+            <textarea name="" id="text" cols="70" rows="4"></textarea>
+        </div>
+    </div>
+    <script >
+        let text=document.getElementById("text"),
+            count=document.getElementById("count"),
+            total = 30;
+        //在事件触发的function里，用一个参数接收事件对象
+        document.onkeyup=function(event){
+            let len=text.value.length;
+            let allow=total-len;
+            count.innerHTML=allow;
+        };
+    </script>
+</body>
+</html>

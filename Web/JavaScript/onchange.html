@@ -9,7 +9,7 @@
 <body>
     <div class="box">
         请选择你喜欢的背景色
-        <select name="" id="bgcolor">
+        <select name="" id="menu">
             <option value="">请选择</option>
             <option value="#f00">红色</option>
             <option value="#0f0">绿色</option>
@@ -18,5 +18,22 @@
             <option value="#ccc">灰色</option>
         </select>
     </div>
+    <script >
+        let menu=document.getElementById("menu");
+        //菜单绑定onchange事件，作用域select或checkbox或radio
+        menu.onchange=function(){
+            //获取当前选中的值
+            let bgcolor=this.value;
+            /* 也可以用一下方法获取
+            let bgcolor2=this.options[menu.selectedIndex].value;
+            */
+            if(bgcolor !== ""){
+                document.body.style.background=bgcolor;
+            }else{
+                //没有颜色值时显示白色
+                document.body.style.background="#fff";
+            }
+        }
+    </script>
 </body>
 </html>
