@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Window.open</title>
+</head>
+<body>
+    <input type="button" value="退出" id="quit">
+    <script >
+        window.onload = function(){
+            //打开子窗口，显示new-window.html
+            window.open("new-window.html", "new-window", "width=400,height=200,left=0,menubar=no,scrollbars=no,location=no,status=no");
+        };
+        let quit = document.getElementById("quit");
+        //点击关闭当前窗口
+        quit.onclick = function(){
+            window.close();
+        }
+    </script>
+</body>
+</html>
