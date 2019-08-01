@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+body{
+    font-family: "微软雅黑";
+    color: #14191e;
+}
+
+.main{
+    width: 1200px;
+    height: 460px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner{
+    width: 1200px;
+    height: 460px;
+    overflow: hidden;
+    /*这里的relative 是为了使得banner-slide 的绝对定位的父元素为 banner所在的标签*/
+    position: relative;
+}
+.banner-slide{
+    width: 1200px;
+    height: 460px;
+    /*absolute: 相对于最近的已定位的父元素，如果没有已定位的父元素，那么它的位置相对于<html>*/
+    position: absolute;
+    background-repeat: no-repeat;
+    display: none;
+}
+.slide1{
+    background-image: url("banner/bg1.jpg");
+}
+.slide2{
+    background-image: url("banner/bg2.jpg");
+}
+.slide3{
+    background-image: url("banner/bg3.jpg");
+}
+
+/*要显示的图片*/
+.slide-active{
+    display: block;
+}
+
+/*图片按钮*/
+.button{
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    /*left和right同时出现的时候left先起作用*/
+    left: 244px;
+    top: 50%;
+    margin-top: -40px;
+    background: url("banner/arrow.png") no-repeat center center;
+}
+.button:hover{
+    background-color: #333;
+    opacity: 0.3;
+    /*透明度兼容性*/
+    filter: alpha(opacity=30);
+}
+
+/*上一张图片按钮*/
+.prev{
+    /*箭头图片旋转180度*/
+    transform: rotate(180deg);
+}
+
+/*下一张图片按钮*/
+.next{
+    /*这里要先设置left为 auto，right才会起作用，
+    因为button 中设置过left*/
+    left: auto;
+    right: 0;
+}
+/*圆点导航*/
+.dots{
+    position: absolute;
+    right: 0;
+    bottom: 24px;
+    text-align: right;
+}
+.dots span{
+    display: inline-block;
+}

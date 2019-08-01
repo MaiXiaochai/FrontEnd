@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeout-setInterval</title>
+</head>
+<body>
+    <script >
+        //这里timer为什么不设置为空字符串，因为setTimeout 和 setInterval返回的id 是一个对象，
+        //所以建议给一个对象，所以用null；其次，null释放内存
+        let num=1, max=10, timer=null;
+        // //每隔一秒钟num递增一次，直到num的值等于max，清除setTimeout
+        // timer=setInterval(function(){
+        //     console.log(num);
+        //     num++;
+        //     if(num > max){
+        //         clearInterval(timer);
+        //     }
+        // }, 1000);
+        function inCreamentNum(){
+            console.log(num);
+            num++;
+            if(num<=max){
+                setTimeout(inCreamentNum, 1000);
+            }else{
+                clearTimeout(timer);
+            }
+        }
+        timer=setTimeout(inCreamentNum, 1000);
+    </script>
+</body>
+</html>

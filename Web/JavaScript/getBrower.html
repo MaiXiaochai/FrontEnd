@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getBrower</title>
+</head>
+<body>
+    <script >
+        function getBrower(){
+            let explorer = navigator.userAgent.toLowerCase(), brower;
+            //indexOf,返回某个指定的字符串值在字符串中首次出现的位置，如果没有出现过，返回-1
+            if (explorer.indexOf("msie") > -1){
+                brower = "IE"
+            }else if(explorer.indexOf("chrome") > -1){
+                brower = "Chrome"
+            }else if(explorer.indexOf("opera") > -1) {
+                brower = "Opera"
+            }else if(explorer.indexOf("safari") > -1) {
+                brower = "safari"
+            }
+            return brower;
+        }
+        let explorer = getBrower();
+        //IE不支持console.log()
+        // console.log("当前浏览器为: " + explorer);
+        alert("当前浏览器为: " + explorer);
+    </script>
+</body>
+</html>
