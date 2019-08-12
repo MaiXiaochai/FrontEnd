@@ -61,13 +61,15 @@ function slideImg() {
     for(let m=0; m<menuItems.length; m++){
         menuItems[m].setAttribute("data-index", m);
         menuItems[m].onmouseover = function () {
+            subMenu.className = "sub-menu";
             //遍历所有子菜单，将每一个都隐藏
             for (let b = 0; b < innerBox.length; b++){
                 innerBox[b].style.display="none";
+                menuItems[b].style.background = "None";
             }
             //每一个menu-item定义data-index属性，作为索引
             //这里其实去掉了class 的 hide 值
-            subMenu.className = "sub-menu";
+            menuItems[m].style.background = "rgba(7, 17, 27, 0.1)";
             innerBox[m].style.display = "block";
         }
     }
@@ -76,7 +78,10 @@ function slideImg() {
     };
     subMenu.onmouseover= function(){
         this.className = "sub-menu"
-    }
+    };
+    subMenu.onmouseout = function(){
+        this.className = "sub-menu hide";
+    };
 }
 
 
