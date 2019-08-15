@@ -1,3 +1,4 @@
 <p>
-  stars works!
+  <span *ngFor="let star of stars" class="oi"  [class.oi-star]="star"></span>
+  <span class="ml-2">{{rating}}星</span>
 </p>
