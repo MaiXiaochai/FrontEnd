@@ -1,4 +1,4 @@
-<a [routerLink]="['/']">主页</a><br>
-<a [routerLink]="['/product']" [queryParams]="{id: 1}">商品详情</a><br>
+<a [routerLink]="['/home']">主页</a><br>
+<a [routerLink]="['/product', 1]">商品详情</a><br>
 <input type="button" value="商品详情" (click)="toProductDetails()">
 <router-outlet></router-outlet>
