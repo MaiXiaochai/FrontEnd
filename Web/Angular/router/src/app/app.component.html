@@ -1,6 +1,6 @@
 <a [routerLink]="['/home']">主页</a><br>
 <a [routerLink]="['/product', 1]">商品详情</a><br>
-<input type="button" value="商品详情" (click)="toProductDetails()"><br><br>
+<input type="button" value="商品详情" (click)="toProductDetails()"><br>
 <a [routerLink]="[{outlets: {primary: 'home', aux: 'chat'}}]">开始聊天</a><br>
 <a [routerLink]="[{outlets: {aux: null}}]">结束聊天</a><br>
 <router-outlet></router-outlet>

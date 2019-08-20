@@ -2,7 +2,7 @@
   <div *ngFor="let product of products" class="card col-md-4 mt-1 border-white float-md-left">
     <img src="http://placehold.it/320x150" class="img-thumbnail">
     <div class="card-body pl-1 pr-1">
-      <h5 class="card-subtitle float-md-left">{{product.title}}</h5>
+      <a class="card-subtitle float-md-left">{{product.title}}</a>
       <h4 class="card-subtitle text-muted float-md-right"><a>￥{{product.price}}</a></h4>
       <div class="clearfix"></div>
       <p class="card-text mt-2">{{product.desc}}</p>
