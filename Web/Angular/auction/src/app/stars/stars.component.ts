@@ -12,12 +12,10 @@ export class StarsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // 这里通过用分数决定显示几个星星
+    // 这里通过分数比较确定实心星星和空心星星
     this.stars = [];
     for (let i = 1; i <= 5; i++) {
-      this.stars.push(i <= this.rating);
+      this.stars.push(i > this.rating);
     }
-
   }
-
 }
