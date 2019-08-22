@@ -6,7 +6,7 @@ import {LoggerService} from './logger.service';
 })
 export class ProductService {
 
-  constructor(private logger: ProductService) { }
+  constructor(public logger: LoggerService) { }
   getProduct(): Product {
     this.logger.log('getPoduct方法被调用');
     // 这里为了演示，不会去查询数据库，而是直接实例化一个对象
