@@ -9,6 +9,8 @@ import {Product, Comment, ProductService} from '../shared/product.service';
 })
 
 export class ProductDetailComponent implements OnInit {
+  birthday: Date = new Date();
+  pi = 3;
   product: Product;
   comments: Comment[];
   constructor(private routeInfo: ActivatedRoute,
