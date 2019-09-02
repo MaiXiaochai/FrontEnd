@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {setTimeout} from 'timers';
 
 @Injectable({
   providedIn: 'root'
