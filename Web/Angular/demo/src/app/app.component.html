@@ -1,0 +1,11 @@
+<div style="background: cyan">
+  <h2>这是父组件</h2>
+  <div>
+    问候语：<input type="text" [(ngModel)]="greeting">
+  </div>
+  <div>
+    姓名：<input type="text" [(ngModel)]="user.name">
+  </div>
+  <app-child [greeting]="greeting" [user]="user"></app-child>
+</div>
+
