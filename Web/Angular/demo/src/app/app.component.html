@@ -1,3 +1,21 @@
+<a [routerLink]="['/']" >child</a><br>
+<a [routerLink]="['/destroy']">destroy</a>
+<router-outlet></router-outlet>
+<hr><hr>
 <app-child2 #child11></app-child2>
 <app-child2 #child2></app-child2>
 <button (click)="child2.greeting('Jerry')">调用child2的greeting方法</button>
+
+<div class="wrapper">
+  <h2>这是父组件</h2>
+  <div>这个div定义在父组件中</div>
+  <app-projection>
+    <div class="head">页头: 这个div是父组件投影到子组件的,title是{{title}}</div>
+    <div class="footer">页脚: 这个div是父组件投影到子组件的</div>
+  </app-projection>
+</div>
+<h5>innerHTML属性绑定</h5>
+<hr>
+<div [innerHTML]="divContent"></div>
+<hr>
+<h3>{{message}}</h3>

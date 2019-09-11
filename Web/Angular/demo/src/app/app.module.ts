@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { ChildComponent } from './child/child.component';
 import {FormsModule} from '@angular/forms';
 import { Child2Component } from './child2/child2.component';
+import { ProjectionComponent } from './projection/projection.component';
+import { DestroyComponent } from './destroy/destroy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChildComponent,
-    Child2Component
+    Child2Component,
+    ProjectionComponent,
+    DestroyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
