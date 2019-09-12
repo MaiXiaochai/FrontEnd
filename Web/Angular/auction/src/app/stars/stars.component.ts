@@ -9,6 +9,8 @@ export class StarsComponent implements OnInit {
   @Input()
   private rating = 0;
   private stars: boolean[];
+  @Input()
+  private readonly = true;
   constructor() { }
 
   ngOnInit() {
@@ -16,6 +18,12 @@ export class StarsComponent implements OnInit {
     this.stars = [];
     for (let i = 1; i <= 5; i++) {
       this.stars.push(i > this.rating);
+    }
+  }
+  clickStar(index: number) {
+    if (!this.readonly) {
+      this.rating = index + 1;
+      this.ngOnInit(); // 重新判断星级
     }
   }
 }

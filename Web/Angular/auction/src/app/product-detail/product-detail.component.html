@@ -12,7 +12,11 @@
     </p>
   </div>
 </div>
-
+<div>
+<!--  readonly=false,可以评价；[rating]="newRating",默认5星评价-->
+  <div><app-stars [readonly]="false" [rating]="newRating"></app-stars></div>
+  <div><textarea [(ngModel)]="newComment"></textarea></div>
+</div>
 <div class="card"  *ngFor="let comment of comments">
   <div class="row">
     <hr>

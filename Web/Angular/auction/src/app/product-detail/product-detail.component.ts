@@ -11,6 +11,8 @@ import {Product, Comment, ProductService} from '../shared/product.service';
 export class ProductDetailComponent implements OnInit {
   product: Product;
   comments: Comment[];
+  newRating = 5;
+  newComment = '';
   constructor(private routeInfo: ActivatedRoute,
               private productService: ProductService) { }
 
