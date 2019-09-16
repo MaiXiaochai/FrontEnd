@@ -32,11 +32,13 @@ export class ProductService {
 
   // 返回指定 id的商品信息
   getProduct(id: number): Product {
+    // tslint:disable-next-line:triple-equals
     return this.products.find((product) => product.id == id);
   }
 
   // 返回指定 id的商品的所有评论信息
   getCommentsForProductId(id: number): Comment[] {
+    // tslint:disable-next-line:triple-equals
     return this.comments.filter((comment: Comment) => comment.productId == id);
   }
 }

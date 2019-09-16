@@ -1,5 +1,7 @@
 <p>
-  <span *ngFor="let star of stars; let i = index;" class="fa fa-star" [ngStyle]="{'color': star ? '': 'orange'}" [class.fa-star-o]="star"
+  <span *ngFor="let star of stars; let i = index;" class="fa fa-star" [ngStyle]="{'color': star ? '': 'orange'}"
+        [class.fa-star-o]="star"
   (click)="clickStar(i)"></span>
-  <span class="ml-2">{{rating}}星</span>
+  <!--一位整数，最少0位、最多2位小数  -->
+  <span class="ml-2">{{rating | number:'1.0-1'}}星</span>
 </p>

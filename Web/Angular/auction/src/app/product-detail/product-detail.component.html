@@ -13,6 +13,9 @@
   </div>
 </div>
 <div>
+  <button class="btn btn-success btn-sm" (click)="isCommentHiidden = !isCommentHiidden">添加评论</button>
+</div>
+<div [hidden]="isCommentHiidden">
 <!--  readonly=false,可以评价；[rating]="newRating",默认5星评价-->
   <div><app-stars [readonly]="false" [(rating)]="newRating"></app-stars></div>
   <div><textarea [(ngModel)]="newComment"></textarea></div>
