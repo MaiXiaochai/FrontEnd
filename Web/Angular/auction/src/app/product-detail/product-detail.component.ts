@@ -22,4 +22,15 @@ export class ProductDetailComponent implements OnInit {
     this.product = this.productService.getProduct(productId);
     this.comments = this.productService.getCommentsForProductId(productId);
   }
+  addComment() {
+    const comment = new Comment(
+      0,
+      this.product.id,
+      new Date().toLocaleDateString(),
+      'someone',
+      this.newRating,
+      this.newComment
+      );
+    this.comments.unshift(comment);
+  }
 }
