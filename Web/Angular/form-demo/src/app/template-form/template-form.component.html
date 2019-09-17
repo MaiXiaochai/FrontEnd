@@ -1,0 +1,9 @@
+<form #myform ='ngForm' action="/regist" method="post" (ngSubmit)="mySubmit(myform.value)">
+  <div>用户名：<input ngModel #useername="ngModel" name="username" type="text"></div>
+  <div>手机号：<input ngModel name="phoneNumber" type="number"></div>
+  <div ngModelGroup="passwdGroup">
+    <div>密码：<input ngModel name="passwd1" type="password"></div>
+    <div>确认密码：<input ngModel name="pconfirm" type="password"></div>
+  </div>
+  <button type="submit">注册</button>
+</form>

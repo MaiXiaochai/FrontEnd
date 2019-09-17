@@ -14,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
   comments: Comment[];
   newRating = 5;
   newComment = '';
-  isCommentHiidden = true;
+  isCommentHidden = true;
 
   constructor(private routeInfo: ActivatedRoute,
               private productService: ProductService) { }
@@ -43,6 +43,6 @@ export class ProductDetailComponent implements OnInit {
 
     this.newComment = null; // 评论提交后，新评论置空
     this.newRating = 5; // 评论提交后，恢复默认五星
-    this.isCommentHiidden = true; // 评论提交后，评论区隐藏起来
+    this.isCommentHidden = true; // 评论提交后，评论区隐藏起来
   }
 }
