@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",  // 编译成ES6规范的JS
+    "module": "commonjs", //现在使用的规范
+    "emitDecoratorMetadata": true, // 编译时保留装饰器的源数据
+    "experimentalDecorators": true,
+    "outDir": "build", // 编译好的JS文件放到build目录里
+    "lib": ["es6"] // 自己开发的时候要用到ES6的语法
+  },
+  "exclude": [    //要排除的文件或文件夹
+    "node_modules"
+  ]
+}
