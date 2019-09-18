@@ -15,6 +15,9 @@ import {ProductService} from './shared/product.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { ReactiveRegistComponent } from './reactive-regist/reactive-regist.component';
+import { MobileValidatorDirective } from './directives/mobile-validator.directive';
+import { EqualValidatorDirective } from './directives/equal-validator.directive';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { ReactiveRegistComponent } from './reactive-regist/reactive-regist.compo
     HomeComponent,
     FilterPipe,
     ReactiveRegistComponent,
+    MobileValidatorDirective,
+    EqualValidatorDirective,
+    TemplateFormComponent,
   ],
   imports: [
     BrowserModule,

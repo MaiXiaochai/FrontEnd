@@ -1,0 +1,11 @@
+.invalid-info-e {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.invalid-info-r {
+  color: black;
+  font-size: 14px;
+  margin-bottom: 2px;
+}

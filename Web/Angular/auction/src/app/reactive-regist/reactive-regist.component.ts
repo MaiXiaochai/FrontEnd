@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {equalValidator, mobileValidator} from '../validator/Validators';
+import {equalValidator, mobileAsyncValidator, mobileValidator} from '../validator/Validators';
 
 @Component({
   selector: 'app-reactive-regist',
@@ -17,7 +17,7 @@ export class ReactiveRegistComponent implements OnInit {
       // 数组的各元素含义[FormControl初始值，一个校验方法，一个异步的校验方法]
       // 若元素多于三个，其它的元素就会被忽略
       username: ['', [Validators.required, Validators.minLength(6)]],
-      phoneNumber: ['', mobileValidator],
+      phoneNumber: ['', mobileValidator, mobileAsyncValidator],
       passwordsGroup: fb.group({
         password: ['', Validators.minLength(6)],
         pconfirm: [''],
@@ -27,7 +27,7 @@ export class ReactiveRegistComponent implements OnInit {
 
   onSubmit() {
     // 整个formModel中所有验证都合法，才会打印值信息
-    const errors =this.formModel.get('username').errors;
+    const errors = this.formModel.get('username').errors;
     console.log('username的校验结果：' + JSON.stringify(errors));
     if (this.formModel.valid) {
       console.log(this.formModel.value);

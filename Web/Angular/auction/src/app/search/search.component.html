@@ -1,19 +1,29 @@
-<form name="searchForm" role="form">
+<!-- 使用 formGroup 指令把form表单和控制器中的formModel连接起来-->
+<form [formGroup]="formModel" (ngSubmit)="onSearch()" novalidate>
   <!--商品名称-->
   <div class="form-group">
     <label for="productName">商品名称：</label>
-    <input type="text" id="productName" placeholder="商品名称" class="form-control">
+    <input formControlName="title" type="text" id="productName" placeholder="商品名称" class="form-control"
+           [class.is-invalid]="formModel.hasError('minlength', 'title') && formModel.get('title').touched">
+    <span class="invalid-feedback" [class.hidden]="!formModel.hasError('minlength', 'title') && formModel.get('title').touched">请输入至少3个字</span>
   </div>
   <!--商品价格-->
   <div class="form-group">
     <label for="productPrice">商品价格：</label>
-    <input type="number" id="productPrice" placeholder="商品价格" class="form-control">
+    <input formControlName="price" type="number" id="productPrice" placeholder="商品价格" class="form-control"
+           [class.is-invalid]="formModel.hasError('positiveNumber', 'price') && formModel.get('price').touched">
+    <span class="invalid-feedback" [class.hidden]="!formModel.hasError('positiveNumber', 'price') && formModel.get('price').touched">请输入正数</span>
   </div>
+
   <!--商品类别-->
   <div class="form-group">
     <label for="productCategory">商品类别：</label>
-    <select id="productCategory" class="form-control"></select>
+    <select formControlName="category" id="productCategory" class="form-control">
+      <option value="-1">全部分类</option>
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+    </select>
   </div>
+
   <!--搜索按钮-->
   <div class="form-group">
     <button type="submit" class="btn btn-primary btn-block">搜索</button>

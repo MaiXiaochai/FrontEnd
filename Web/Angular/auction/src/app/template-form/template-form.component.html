@@ -1,0 +1,21 @@
+<form #myForm ='ngForm' (ngSubmit)="onSubmit(myForm.value, myForm.valid)" novalidate>
+  <label>用户名:<input type="text" ngModel name="username" minlength="6"></label>
+  <div [hidden]="myForm.form.get('username').valid || myForm.form.get('username').untouched">
+    <div class="invalid-info-e" [hidden]="!myForm.form.hasError('required', 'username')">用户名是必填项</div>
+    <div class="invalid-info-e" [hidden]="!myForm.form.hasError('minlength', 'username')">用户名最小长度是6</div>
+  </div>
+
+  <label>手机号：<input ngModel appMobileValidator name="phoneNumber" type="number"></label>
+  <!-- 手机号验证合法 或者 该字段从未被修改时隐藏信息  -->
+  <div [hidden]="myForm.form.get('phoneNumber').valid || myForm.form.get('phoneNumber').pristine">
+    <div class="invalid-info-e" [hidden]="!myForm.form.hasError('phoneNumber', 'phoneNumber')">请输入正确的手机号</div>
+  </div>
+
+  <div ngModelGroup="passwordsGroup" appEqualValidator>
+    <label>密码：<input ngModel minlength="6" name="password" type="password"></label>
+    <div class="invalid-info-e" [hidden]="!myForm.form.hasError('minlength', ['passwordsGroup', 'password'])">密码最小长度是6</div>
+    <label>确认密码：<input ngModel name="pconfirm" type="password"></label>
+    <div class="invalid-info-e" [hidden]="!myForm.form.hasError('equal', 'passwordsGroup')">两次输入的密码不一致</div>
+  </div>
+  <button type="submit" class="btn btn-primary col-sm-10">注册</button>
+</form>

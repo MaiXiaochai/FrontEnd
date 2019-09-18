@@ -12,5 +12,5 @@ import { Component } from '@angular/core';
 // 要把源数据附加到该类上
 // 整体理解，通过Component装饰器将源数据附加到 AppComponent类上
 export class AppComponent {
-  title = 'GodLike';
+  title = 'Auction';
 }

@@ -1,27 +1,37 @@
 <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
-  <label>用户名：<input type="text" formControlName="username"></label>
+  <label>用户名：<input type="text" class="form-control" formControlName="username"></label>
   <!--
   hasError接收两个参数，
   第一个参数 是希望校验的错误（是校验失败时返回的对象中的key的值，在Validators.required中校验失败返回的是{required: true}，
     注意，其实只要这个参数位置有值，Angular就认为校验是失败的），
   第二个参数 是你想检查的字段的名字，这里为 username
   -->
-  <div class="alert alert-warning" [hidden]="!formModel.hasError('required', 'username')">用户名是必填项</div>
-  <div class="alert alert-warning" [hidden]="!formModel.hasError('minlength', 'username')">用户名最小长度是6</div>
+  <!-- 表单校验结果是有效的 或者 用户从未点击过这个字段，隐藏错误信息 -->
+  <div [hidden]="formModel.get('username').valid || formModel.get('username').untouched">
+    <div class="invalid-info-e" [hidden]="!formModel.hasError('required', 'username')">用户名是必填项</div>
+    <div class="invalid-info-e" [hidden]="!formModel.hasError('minlength', 'username')">用户名最小长度是6</div>
+  </div>
 
-  <label>手机号：<input type="text" formControlName="phoneNumber"></label>
-  <div class="alert alert-warning" [hidden]="!formModel.hasError('phoneNumber', 'phoneNumber')">请输入正确的手机号</div>
+  <label>手机号：<input type="text" class="form-control" formControlName="phoneNumber"></label>
+  <!-- 手机号验证合法 或者 该字段从未被修改时隐藏信息  -->
+  <div [hidden]="formModel.get('phoneNumber').valid || formModel.get('phoneNumber').pristine">
+    <div class="invalid-info-e" [hidden]="!formModel.hasError('phoneNumber', 'phoneNumber')">请输入正确的手机号</div>
+  </div>
+  <div [hidden]="!formModel.get('phoneNumber').pending" class="invalid-info-r">
+    手机号校验中...
+  </div>
 
   <div formGroupName="passwordsGroup">
-    <label>密码：<input type="password" formControlName="password"></label>
+    <label>密码：<input type="password" class="form-control" formControlName="password"></label>
     <!--
     ['passwordsGroup', 'password']，因为password在passwordsGroup下，所以这样写才能校验到password
     第一个元素是password的上级passwordsGroup
     第二个元素才是password
     -->
-    <div class="alert alert-warning" [hidden]="!formModel.hasError('minlength', ['passwordsGroup', 'password'])">密码最小长度是6</div>
-    <label>确认密码：<input type="password" formControlName="pconfirm"></label>
-    <div class="alert alert-warning" [hidden]="!formModel.hasError('equal', 'passwordsGroup')">两次输入的密码不一致</div>
+    <div class="invalid-info-e" [hidden]="!formModel.hasError('minlength', ['passwordsGroup', 'password'])">密码最小长度是6</div>
+    <label>确认密码：<input type="password" class="form-control" formControlName="pconfirm"></label>
+<!--    <div class="alert alert-warning" [hidden]="!formModel.hasError('equal', 'passwordsGroup')">两次输入的密码不一致</div>-->
+    <div class="invalid-info-e">{{formModel.getError('equal', 'passwordsGroup')?.descInfo}}</div>
   </div>
-  <button type="submit">注册</button>
+  <button type="submit" class="btn btn-primary col-sm-10">注册</button>
 </form>
