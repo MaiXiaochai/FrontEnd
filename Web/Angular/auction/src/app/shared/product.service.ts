@@ -1,55 +1,7 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ProductService {
-  // 商品详情信息
-  private products: Product[] = [
-    new Product(1, '慕手机Max', 1699, 4.5, '4100Ah快充/3G运存/6寸大屏', ['电子产品', '硬件']),
-    new Product(2, '超级电视 S8', 2999, 4.0, '安卓智能/超高清', ['电子设备']),
-    new Product(3, 'MoocBook Pro', 13999, 5, '新品抢先/精品外观/颜值逆天', ['硬件设备']),
-    new Product(4, '扫地机器人', 1699, 4.0, '自主充电/完全自主/清扫面积大', ['电子产品']),
-    new Product(5, '大疆云台', 1599, 4.5, '超长续航/充电五分钟，拍摄一小时', ['硬件设备']),
-    new Product(6, '大疆无人机', 9999, 5.0, '30分钟续航/超清稳定/自主避障', ['硬件设备']),
-    new Product(7, '《活着》', 35, 5.0, '余华/短篇小说/获奖作品', ['图书']),
-  ];
-
-  // 评论详情信息
-  private comments: Comment[] = [
-    new Comment(1, 1, '2019-8-22 16:58:19', 'LiMing', 3, 'Nice！'),
-    new Comment(2, 1, '2019-8-22 16:58:19', 'Danny', 3, 'Good！'),
-    new Comment(3, 1, '2019-8-22 16:58:19', 'Jenny', 3, 'Very good！'),
-    new Comment(4, 2, '2019-8-22 16:58:19', 'ZhangQuandan', 3, 'stupid!'),
-    new Comment(5, 5, '2019-8-22 16:58:19', 'ZhaoTiezhu', 3, '重金求子！'),
-    new Comment(6, 6, '2019-8-22 16:58:19', 'LiCuihua', 3, '哎呀，妈呀！'),
-    new Comment(7, 7, '2019-9-18 16:58:19', '宇智波·鼬', 5, '好书。'),
-  ];
-
-  // 获取所有商品分类信息
-  getAllCategories(): string[] {
-    return ['电子产品', '硬件', '图书'];
-  }
-
-  constructor() { }
-
-  // 返回所有商品信息
-  getProducts(): Product[] {
-    return this.products;
-  }
-
-  // 返回指定 id的商品信息
-  getProduct(id: number): Product {
-    // tslint:disable-next-line:triple-equals
-    return this.products.find((product) => product.id == id);
-  }
-
-  // 返回指定 id的商品的所有评论信息
-  getCommentsForProductId(id: number): Comment[] {
-    // tslint:disable-next-line:triple-equals
-    return this.comments.filter((comment: Comment) => comment.productId == id);
-  }
-}
 
 // Product 包含了产品所包含的信息
 export class Product {
@@ -73,4 +25,34 @@ export class Comment {
     public rating: number,
     public content: string
   ) {}
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
+  constructor(private http: HttpClient) { }
+
+  // 获取所有商品分类信息
+  getAllCategories(): string[] {
+    return ['电子产品', '硬件', '图书'];
+  }
+
+  // 返回所有商品信息
+  getProducts(): Observable<Product[]> {
+    // @ts-ignore
+    return this.http.get('/api/products');
+  }
+
+  // 返回指定 id的商品信息
+  getProduct(id: number): Observable<Product> {
+    // @ts-ignore
+    return this.http.get('/api/product/' + id);
+  }
+
+  // 返回指定 id的商品的所有评论信息
+  getCommentsForProductId(id: number): Observable<Comment[]> {
+    // @ts-ignore
+    return this.http.get('/api/product/' + id + '/comments');
+  }
 }

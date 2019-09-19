@@ -18,6 +18,7 @@ import { ReactiveRegistComponent } from './reactive-regist/reactive-regist.compo
 import { MobileValidatorDirective } from './directives/mobile-validator.directive';
 import { EqualValidatorDirective } from './directives/equal-validator.directive';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

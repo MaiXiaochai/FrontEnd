@@ -1,14 +1,15 @@
 <div class="img-thumbnail">
   <img src="http://placehold.it/820x230">
   <div>
-    <h4 class="pull-right">￥{{product.price}}</h4>
-    <h5>{{product.title}}</h5>
-    <p>{{product.desc}}</p>
+  <!-- product?.price 表示当product没有值的时候，不访问其price属性  -->
+    <h4 class="pull-right">￥{{product?.price}}</h4>
+    <h5>{{product?.title}}</h5>
+    <p>{{product?.desc}}</p>
   </div>
   <div>
-    <p class="pull-right">{{comments.length}} 条评论</p>
+    <p class="pull-right">{{comments?.length}} 条评论</p>
     <p>
-      <app-stars [rating]='product.rating'></app-stars>
+      <app-stars [rating]='product?.rating'></app-stars>
     </p>
   </div>
 </div>

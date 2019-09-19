@@ -22,8 +22,18 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     // this.routeInfo.snapshot.params.productId 中的productId是路由中定义的
     const productId: number = this.routeInfo.snapshot.params.productId;
-    this.product = this.productService.getProduct(productId);
-    this.comments = this.productService.getCommentsForProductId(productId);
+    this.productService.getProduct(productId).subscribe(
+      /* 这里，product这个变量，在模板中好多地方都用到了，要改成流（ product: Observable<Product>;）的话，
+         模板里用到product的地方都要手动添加 async管道,改起来比较麻烦，所以这里进行了手动订阅。
+         同样，虽然comments在模板中使用较少，但是在控制器中将它当成了数组并使用了数组的一些方法，所以，也要手动订阅。
+         当流里边发射一个新数据的时候的处理方法，getProduct返回的流里边是product，所以，流里边发射的数据就是product数据
+         [2019-9-19 21:54:52]
+       */
+      product => this.product = product
+    );
+    this.productService.getCommentsForProductId(productId).subscribe(
+      comments => this.comments = comments
+    );
   }
   addComment() {
     const comment = new Comment(
