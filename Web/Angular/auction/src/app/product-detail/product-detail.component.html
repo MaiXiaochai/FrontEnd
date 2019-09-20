@@ -27,11 +27,10 @@
   <div class="row">
     <hr>
     <div class="col-md-12">
-      <app-stars [rating]="comment.rating"></app-stars>
-      <span class="ml-1 font-weight-bold">{{comment.user}}</span>
-      <span class="pull-right mr-2">{{comment.timestamp}}</span>
-      <p class="ml-1 mt-3">{{comment.content}}</p>
+      <app-stars [rating]="comment?.rating"></app-stars>
+      <span class="ml-1 font-weight-bold">{{comment?.user}}</span>
+      <span class="pull-right mr-2">{{comment?.timestamp}}</span>
+      <p class="ml-1 mt-3">{{comment?.content}}</p>
     </div>
   </div>
 </div>
-

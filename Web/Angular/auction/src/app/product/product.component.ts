@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product, ProductService} from '../shared/product.service';
-import {FormControl} from '@angular/forms';
-import {debounceTime} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-product',
@@ -16,7 +15,8 @@ export class ProductComponent implements OnInit {
   // ngOnInit 组件声明周期钩子中的一个钩子，会在组件实例化的时候被调用一次
   ngOnInit() {
     this.products = this.productService.getProducts();
+    this.productService.searchEvent.subscribe(
+      params => this.products = this.productService.search(params)
+    );
   }
 }
-
-

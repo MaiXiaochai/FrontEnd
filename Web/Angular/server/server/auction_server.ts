@@ -58,21 +58,42 @@ app.get('/', (req, res) => {
 
 // 所有商品详细信息
 app.get('/api/products', (req, res) => {
-    res.json(products);
+    let result = products;
+    let params = req.query; // {title: '大疆'，price: 20, category: '电子产品'}
+
+    // 判断商品名称（title）
+    if (params.title) {
+        result = result.filter(
+            (p) => p.title.indexOf(params.title) !== -1
+        )
+    }
+
+    // 判断价格（price）,价格是数字
+    if (params.price) {
+        result = result.filter(
+            (p) => p.price <= parseInt(params.price)
+        )
+    }
+
+    // 判断商品类别(category)
+    if (params.category !== '-1' && result.length > 0) {
+        result = result.filter(
+            (p) => p.categories.indexOf(params.category) !== -1
+        )
+    }
+    res.jsonp(result);
 });
 
 // 根据商品id获取指定的商品信息
 app.get('/api/product/:id', (req, res) => {
     // 这里的find注意，是用req.params.id做条件在products中查找
-    // @ts-ignore
-    res(products.find((product) => product.id == req.params.id));
+    res.jsonp(products.find((product) => product.id == parseInt(req.params.id)));
 });
 
 // 根据商品id获取指定的商品的评论信息
-app.get('/api/product/:id', (req, res) => {
+app.get('/api/product/:id/comments', (req, res) => {
     // 这里的find注意，是用req.params.id做条件在products中查找
-    // @ts-ignore
-    res(comments.filter((comment: Comment) => comment.productId == req.params.id));
+    res.jsonp(comments.filter((comment: Comment) => comment.productId == parseInt(req.params.id)));
 });
 
 const server = app.listen(8000, "localhost", () => {

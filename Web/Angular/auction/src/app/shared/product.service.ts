@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -27,11 +27,22 @@ export class Comment {
   ) {}
 }
 
+export class ProductSearchParams {
+  constructor(
+    public title: string,
+    public price: number,
+    public category: string,
+  ) {}
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   constructor(private http: HttpClient) { }
+  // EventEmitter 要写在最开始，也就是现在的这个位置
+  // EventEmitter 既可以作为事件的订阅者也可以作为事件的发射者
+  searchEvent: EventEmitter<ProductSearchParams> = new EventEmitter();
 
   // 获取所有商品分类信息
   getAllCategories(): string[] {
@@ -54,5 +65,26 @@ export class ProductService {
   getCommentsForProductId(id: number): Observable<Comment[]> {
     // @ts-ignore
     return this.http.get('/api/product/' + id + '/comments');
+
+  }
+
+  search(params: ProductSearchParams): Observable<Product[]> {
+    const url = '/api/products?' + this.encodeParams(params);
+    console.log(url);
+    return this.http.get<Product[]>(url);
+  }
+
+  // json参数拼接成字符串
+  private encodeParams(params: ProductSearchParams) {
+    let result: URLSearchParams;
+
+    result = Object.keys(params)
+      .filter(key => params[key])
+      .reduce((sum: URLSearchParams, key: string) => {
+        sum.append(key, params[key]);
+        return sum;
+        // 初始值，类型要和被计算的参数的类型相同
+      }, new URLSearchParams());
+    return result;
   }
 }

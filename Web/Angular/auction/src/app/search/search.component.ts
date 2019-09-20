@@ -7,6 +7,7 @@ import {ProductService} from '../shared/product.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+
 export class SearchComponent implements OnInit {
   formModel: FormGroup;
 
@@ -40,7 +41,8 @@ export class SearchComponent implements OnInit {
 
   onSearch() {
     if (this.formModel.valid) {
-      console.log(this.formModel.value);
+      // 发射的东西应该是符合 ProductSearchParams类声明的一个对象
+      this.productService.searchEvent.emit(this.formModel.value);
     }
   }
 }
