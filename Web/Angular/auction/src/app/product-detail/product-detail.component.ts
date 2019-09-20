@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Product, Comment, ProductService} from '../shared/product.service';
-import {isAsciiLetter} from 'codelyzer/angular/styles/chars';
+import {WebSocketService} from '../shared/web-socket.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,9 +15,12 @@ export class ProductDetailComponent implements OnInit {
   newRating = 5;
   newComment = '';
   isCommentHidden = true;
+  isWatched = false;
+  currentBid: number;
 
   constructor(private routeInfo: ActivatedRoute,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private wsService: WebSocketService) { }
 
   ngOnInit() {
     // this.routeInfo.snapshot.params.productId 中的productId是路由中定义的
@@ -29,7 +32,10 @@ export class ProductDetailComponent implements OnInit {
          当流里边发射一个新数据的时候的处理方法，getProduct返回的流里边是product，所以，流里边发射的数据就是product数据
          [2019-9-19 21:54:52]
        */
-      product => this.product = product
+      product => {
+        this.product = product;
+        this.currentBid = product.price;
+      }
     );
     this.productService.getCommentsForProductId(productId).subscribe(
       comments => this.comments = comments
@@ -54,5 +60,10 @@ export class ProductDetailComponent implements OnInit {
     this.newComment = null; // 评论提交后，新评论置空
     this.newRating = 5; // 评论提交后，恢复默认五星
     this.isCommentHidden = true; // 评论提交后，评论区隐藏起来
+  }
+  watchProduct() {
+    this.isWatched = !this.isWatched;
+    this.wsService.createObservableSocket('ws://localhost:8085', this.product.id)
+      .subscribe();
   }
 }

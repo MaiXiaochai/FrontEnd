@@ -19,6 +19,7 @@ import { MobileValidatorDirective } from './directives/mobile-validator.directiv
 import { EqualValidatorDirective } from './directives/equal-validator.directive';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import {WebSocketService} from './shared/web-socket.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

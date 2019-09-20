@@ -103,21 +103,37 @@ const server = app.listen(8000, "localhost", () => {
 
 
 //=====================================>>>[ WebSocket服务器启动相关 ]<<<=========================================
+const subscriptions = new Map<any, number>();
+
 // 创建一个服务器
 const wsServer = new Server({port: 8085});
 // 当有客户端连接到这个服务器时候，给客户端推送一个消息
 wsServer.on("connection", websocket => {
     websocket.send('这是服务器推送的消息');
     websocket.on('message', message => {
-        console.log('接收到消息：' + message);
-    })
+        let messageObj = JSON.parse(<string>message);
+        // 能取到则用取到的值，否则是空数组
+        let productIds = subscriptions.get(websocket) || [];
+        // @ts-ignore
+        subscriptions.set(websocket, [...productIds, messageObj.productId]);
+    });
 });
 
+const currentBids = new Map<number, number>();
 setInterval(() => {
-    // 如果有客户端连接上WebSocket服务器，定时向所有客户端推送消息
-    if (wsServer.clients) {
-        wsServer.clients.forEach(client => {
-            client.send('这是定时推送');
-        })
-    }
+    products.forEach( p => {
+        // 模拟从其它客户端接收到新的报价
+        let currentBid = currentBids.get(p.id) || p.price;
+        let newBid = currentBid + Math.random() * 5;
+        currentBids.set(p.id, newBid);
+    });
+    // 一个客户端可能关注很多商品报价，这里推送该客户端关注的一组商品的报价
+    // @ts-ignore
+    subscriptions.forEach((productIds: number[], ws) => {
+        let newBids = productIds.map( pid => ({
+            productId: pid,
+            bid: currentBids.get(pid)
+        }));
+        ws.send(JSON.stringify(newBids));
+    });
 }, 2000);

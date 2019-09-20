@@ -13,9 +13,18 @@
     </p>
   </div>
 </div>
+
+<!-- 订阅按钮 -->
+<label> <span style="font-weight: bolder; color: goldenrod;">最新出价：￥</span><span class="bid">{{currentBid}}</span></label>
 <div>
-  <button class="btn btn-success btn-sm" (click)="isCommentHidden = !isCommentHidden">添加评论</button>
-</div>
+  <button class="btn btn-primary col-sm-2" [class.active]="isWatched" (click)="watchProduct()">
+    {{isWatched ? '取消关注': '关注'}}
+  </button>
+</div><br>
+
+<div>
+  <button class="btn btn-primary col-sm-2" (click)="isCommentHidden = !isCommentHidden">添加评论</button>
+</div><br>
 <div [hidden]="isCommentHidden">
 <!--  readonly=false,可以评价；[rating]="newRating",默认5星评价-->
   <div><app-stars [readonly]="false" [(rating)]="newRating"></app-stars></div>
