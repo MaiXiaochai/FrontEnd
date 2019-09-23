@@ -15,7 +15,7 @@
 </div>
 
 <!-- 订阅按钮 -->
-<label> <span style="font-weight: bolder; color: goldenrod;">最新出价：￥</span><span class="bid">{{currentBid}}</span></label>
+<label> <span style="font-weight: bolder; color: goldenrod;">最新出价：￥</span><span class="bid">{{currentBid | number:'.2-2'}}</span></label>
 <div>
   <button class="btn btn-primary col-sm-2" [class.active]="isWatched" (click)="watchProduct()">
     {{isWatched ? '取消关注': '关注'}}

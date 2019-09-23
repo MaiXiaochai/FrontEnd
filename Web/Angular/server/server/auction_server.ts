@@ -130,10 +130,15 @@ setInterval(() => {
     // 一个客户端可能关注很多商品报价，这里推送该客户端关注的一组商品的报价
     // @ts-ignore
     subscriptions.forEach((productIds: number[], ws) => {
-        let newBids = productIds.map( pid => ({
-            productId: pid,
-            bid: currentBids.get(pid)
-        }));
-        ws.send(JSON.stringify(newBids));
+        if (ws.readyState === 1) {
+            let newBids = productIds.map( pid => ({
+                productId: pid,
+                bid: currentBids.get(pid)
+            }));
+            // JSON.stringify(newBids): [{"productId":1,"bid":1751.4301771710295}]
+            ws.send(JSON.stringify(newBids));
+        } else {
+            subscriptions.delete(ws);
+        }
     });
 }, 2000);

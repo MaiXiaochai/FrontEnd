@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Product, Comment, ProductService} from '../shared/product.service';
 import {WebSocketService} from '../shared/web-socket.service';
+import {Subscription} from 'rxjs';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -17,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
   isCommentHidden = true;
   isWatched = false;
   currentBid: number;
+  subscription: Subscription;
 
   constructor(private routeInfo: ActivatedRoute,
               private productService: ProductService,
@@ -62,8 +65,20 @@ export class ProductDetailComponent implements OnInit {
     this.isCommentHidden = true; // 评论提交后，评论区隐藏起来
   }
   watchProduct() {
-    this.isWatched = !this.isWatched;
-    this.wsService.createObservableSocket('ws://localhost:8085', this.product.id)
-      .subscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.isWatched = false;
+      this.subscription = null;
+    } else {
+      this.isWatched = false;
+      this.subscription = this.wsService.createObservableSocket('ws://localhost:8085', this.product.id)
+      // 推送过来的是一个字符串，显影映射成数组，包含了客户订阅的所有产品的报价，需要从里边找出该页面所需的报价
+        .subscribe(
+          products => {
+            const product = products.find(p => p.productId === this.product.id);
+            this.currentBid = product.bid;
+          }
+        );
+    }
   }
 }
