@@ -20,6 +20,7 @@ import { EqualValidatorDirective } from './directives/equal-validator.directive'
 import { TemplateFormComponent } from './template-form/template-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {WebSocketService} from './shared/web-socket.service';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {WebSocketService} from './shared/web-socket.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProductService, WebSocketService],
+  providers: [ProductService, WebSocketService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

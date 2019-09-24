@@ -27,14 +27,14 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     // this.routeInfo.snapshot.params.productId 中的productId是路由中定义的
+    /* 这里，product这个变量，在模板中好多地方都用到了，要改成流（ product: Observable<Product>;）的话，
+       模板里用到product的地方都要手动添加 async管道,改起来比较麻烦，所以这里进行了手动订阅。
+       同样，虽然comments在模板中使用较少，但是在控制器中将它当成了数组并使用了数组的一些方法，所以，也要手动订阅。
+       当流里边发射一个新数据的时候的处理方法，getProduct返回的流里边是product，所以，流里边发射的数据就是product数据
+       [2019-9-19 21:54:52]
+     */
     const productId: number = this.routeInfo.snapshot.params.productId;
     this.productService.getProduct(productId).subscribe(
-      /* 这里，product这个变量，在模板中好多地方都用到了，要改成流（ product: Observable<Product>;）的话，
-         模板里用到product的地方都要手动添加 async管道,改起来比较麻烦，所以这里进行了手动订阅。
-         同样，虽然comments在模板中使用较少，但是在控制器中将它当成了数组并使用了数组的一些方法，所以，也要手动订阅。
-         当流里边发射一个新数据的时候的处理方法，getProduct返回的流里边是product，所以，流里边发射的数据就是product数据
-         [2019-9-19 21:54:52]
-       */
       product => {
         this.product = product;
         this.currentBid = product.price;
@@ -70,11 +70,12 @@ export class ProductDetailComponent implements OnInit {
       this.isWatched = false;
       this.subscription = null;
     } else {
-      this.isWatched = false;
+      this.isWatched = true;
       this.subscription = this.wsService.createObservableSocket('ws://localhost:8085', this.product.id)
       // 推送过来的是一个字符串，显影映射成数组，包含了客户订阅的所有产品的报价，需要从里边找出该页面所需的报价
         .subscribe(
           products => {
+            // @ts-ignore
             const product = products.find(p => p.productId === this.product.id);
             this.currentBid = product.bid;
           }

@@ -70,7 +70,6 @@ export class ProductService {
 
   search(params: ProductSearchParams): Observable<Product[]> {
     const url = '/api/products?' + this.encodeParams(params);
-    console.log(url);
     return this.http.get<Product[]>(url);
   }
 

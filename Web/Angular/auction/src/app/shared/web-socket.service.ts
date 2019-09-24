@@ -22,8 +22,11 @@ export class WebSocketService {
         this.ws.onclose = (event) => observer.complete();
         // onopen,当WebSocket连接打开的时候，发送商品id给服务器
         this.ws.onopen = (event) => this.sendMessage({productId: id});
+        // 关闭ws连接，使得后台的随机数增长也停止
+        return () => this.ws.close.bind(this.ws);
       }
-    ); // .map(message => JSON.parse(message));
+      // @ts-ignore
+    ).pipe(map(message => JSON.parse(message)));
   }
 
   sendMessage(message: any) {

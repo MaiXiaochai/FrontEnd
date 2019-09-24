@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  private products: Observable<Product[]>;
+  products: Observable<Product[]>;
   constructor(private productService: ProductService) {}
 
   // ngOnInit 组件声明周期钩子中的一个钩子，会在组件实例化的时候被调用一次

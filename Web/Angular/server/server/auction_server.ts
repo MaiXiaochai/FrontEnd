@@ -1,5 +1,6 @@
 import * as express from 'express'
 import {Server} from "ws";
+import * as path from 'path';
 
 
 // Product 包含了产品所包含的信息
@@ -51,6 +52,8 @@ let comments: Comment[] = [
 //=====================================>>>[ Http服务器启动相关 ]<<<=========================================
 const app = express();
 
+// 当访问当前的'/'时，去访问client目录
+app.use('/', express.static(path.join(__dirname, '..','client')));
 // 首页
 app.get('/', (req, res) => {
     res.send("Hello Express!");
@@ -109,7 +112,6 @@ const subscriptions = new Map<any, number>();
 const wsServer = new Server({port: 8085});
 // 当有客户端连接到这个服务器时候，给客户端推送一个消息
 wsServer.on("connection", websocket => {
-    websocket.send('这是服务器推送的消息');
     websocket.on('message', message => {
         let messageObj = JSON.parse(<string>message);
         // 能取到则用取到的值，否则是空数组
@@ -131,12 +133,12 @@ setInterval(() => {
     // @ts-ignore
     subscriptions.forEach((productIds: number[], ws) => {
         if (ws.readyState === 1) {
-            let newBids = productIds.map( pid => ({
+            let newBid = productIds.map(pid => ({
                 productId: pid,
                 bid: currentBids.get(pid)
             }));
-            // JSON.stringify(newBids): [{"productId":1,"bid":1751.4301771710295}]
-            ws.send(JSON.stringify(newBids));
+            // JSON.stringify(newBid): [{"productId":1,"bid":1751.4301771710295}]
+            ws.send(JSON.stringify(newBid));// JSON.stringify(newBid)
         } else {
             subscriptions.delete(ws);
         }
