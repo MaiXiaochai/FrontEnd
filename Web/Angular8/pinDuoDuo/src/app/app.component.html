@@ -1,3 +1,4 @@
-<ul>
-  <li *ngFor="let menu of menus; let i = index;"><a href="#">{{menu.title}}</a></li>
-</ul>
+<app-scrollable-tab [menus]="topMenus"
+                    backgroundColor="red"
+                    (tabSelectedEmitter)="handleTabSelectedEvent($event)"
+></app-scrollable-tab>

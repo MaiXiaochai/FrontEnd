@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
+import {TopMenu} from './components/scrollable-tab';
 
-
-interface TopMenu {
-  title: string;
-  // link？ 表示link为可选参数
-  link?: string;
-}
 
 @Component({
   selector: 'app-root',
@@ -13,8 +8,7 @@ interface TopMenu {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pinDuoDuo';
-  menus: TopMenu[] = [
+  topMenus: TopMenu[] = [
     {
       title: '热门',
       link: ''
@@ -84,4 +78,8 @@ export class AppComponent {
       link: ''
     }
   ];
+
+  handleTabSelectedEvent(topMenu: TopMenu) {
+    console.log(topMenu);
+  }
 }

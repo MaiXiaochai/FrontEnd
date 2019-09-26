@@ -1,0 +1,15 @@
+<ul [ngStyle]="{'background-color': backgroundColor}">
+  <li *ngFor="let menu of menus; let i = index; trackBy: trackByIndex">
+    <a href="#"
+       [ngStyle]="{color: i === selectedIndex ? titleActiveColor: titleColor}"
+       (click)="handleSelection(i)">
+      {{menu.title}}
+    </a>
+    <!--
+     如果索引与点击的索引相等，则显示span元素。
+     说人话就是，你点击这个元素，下边显示一条横线作为指示器，提示点击了这个元素。
+     为什么这么说呢？因为是在所有的元素中进行判断的。
+     -->
+    <span class="indicator" [ngStyle]="{'background-color': indicatorColor}" *ngIf="i === selectedIndex"></span>
+  </li>
+</ul>
