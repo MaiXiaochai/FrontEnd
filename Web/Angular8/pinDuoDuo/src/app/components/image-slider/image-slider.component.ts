@@ -30,6 +30,7 @@ export class ImageSliderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // this.imgs.forEach(item => item.nativeElement.style.height = '150px');
     this.imgs.forEach(item => {
+      // 可以防止恶意攻击
       this.rd2.setStyle(item.nativeElement, 'height', '150px');
     });
   }
