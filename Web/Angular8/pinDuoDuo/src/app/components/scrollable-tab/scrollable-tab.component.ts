@@ -44,7 +44,7 @@ export class ScrollableTabComponent implements OnInit {
   trackByIndex(index, item) {
     return index;
   }
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

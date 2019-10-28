@@ -98,7 +98,5 @@ export class AppComponent {
     },
   ];
 
-  handleTabSelectedEvent(topMenu: TopMenu) {
-    console.log(topMenu);
-  }
+  handleTabSelectedEvent(topMenu: TopMenu) {}
 }
