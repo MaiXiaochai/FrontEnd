@@ -1,0 +1,16 @@
+@keyframes myframes {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+div {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 3px 3px 0 rgba(255, 56, 106, 1);
+    animation: myframes 2s linear infinite
+}
