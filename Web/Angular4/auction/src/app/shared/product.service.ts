@@ -51,8 +51,7 @@ export class ProductService {
 
   // 返回所有商品信息
   getProducts(): Observable<Product[]> {
-    // @ts-ignore
-    return this.http.get('/api/products');
+    return this.http.get<Product[]>('/api/products');
   }
 
   // 返回指定 id的商品信息
