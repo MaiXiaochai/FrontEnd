@@ -56,14 +56,12 @@ export class ProductService {
 
   // 返回指定 id的商品信息
   getProduct(id: number): Observable<Product> {
-    // @ts-ignore
-    return this.http.get('/api/product/' + id);
+    return this.http.get<Product>('/api/product/' + id);
   }
 
   // 返回指定 id的商品的所有评论信息
   getCommentsForProductId(id: number): Observable<Comment[]> {
-    // @ts-ignore
-    return this.http.get('/api/product/' + id + '/comments');
+    return this.http.get<Comment[]>('/api/product/' + id + '/comments');
 
   }
 
